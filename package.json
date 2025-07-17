@@ -1,0 +1,26 @@
+{
+  "name": "rinha-backend-2025-nodejs",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx --watch index.ts",
+    "start": "tsc && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaolucenalima/rinha-backend-2025-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaolucenalima/rinha-backend-2025-nodejs/issues"
+  },
+  "homepage": "https://github.com/joaolucenalima/rinha-backend-2025-nodejs#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
