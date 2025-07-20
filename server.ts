@@ -1,40 +1,12 @@
-import { createServer, IncomingMessage } from "node:http"
+import { createServer } from "node:http"
+import { createPayment } from "./src/routes/create-payments"
+import envVariables from "./src/utils/validate-env"
 
-const PORT = 3000
-
-function getReqBody<T>(req: IncomingMessage): Promise<T> {
-  return new Promise((resolve, reject) => {
-    let data = ""
-    req.on("data", chunk => {
-      data += chunk
-    })
-
-    req.on("end", () => {
-      try {
-        resolve(JSON.parse(data))
-      } catch (err) {
-        console.error(err)
-        reject(err)
-      }
-    })
-
-    req.on("error", err => {
-      reject(err)
-    })
-  })
-}
+const PORT = envVariables.APP_PORT || 8080
 
 const server = createServer(async (req, res) => {
   if (req.method === "POST" &&  req.url === "/payments") {
-    interface PaymentsBody { 
-      correlationId: string,
-      amount: number
-    }
-
-    const body = await getReqBody<PaymentsBody>(req)
-
-    res.writeHead(200, { 'Content-Type': 'text/plain' })
-    res.end(JSON.stringify(body))
+    await createPayment(req, res)
   }
 })
 
