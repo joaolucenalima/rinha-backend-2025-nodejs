@@ -15,6 +15,8 @@ server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
 
-export const client = createClient().on("error", console.error);
+export const redisClient = createClient().on("error", console.error);
 
-client.connect();
+redisClient.on('connect', () => console.log("Redis connected"))
+
+redisClient.connect();
