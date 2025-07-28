@@ -19,7 +19,8 @@ services:
           memory: "15MB"
 
   api1: &api
-    image: teste
+    # image:
+    build: . 
     hostname: api1
     environment:
       - APP_PORT=8080
